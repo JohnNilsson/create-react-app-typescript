@@ -144,12 +144,7 @@ module.exports = {
         enforce: 'pre',
         include: paths.appSrc,
       },
-      {
-        test: /\.js$/,
-        loader: require.resolve('source-map-loader'),
-        enforce: 'pre',
-        include: paths.appSrc,
-      },
+
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
       // The `exclude` list *must* be updated with every change to loader extensions.
@@ -162,14 +157,8 @@ module.exports = {
       {
         exclude: [
           /\.html$/,
-          // We have to write /\.(js|jsx)(\?.*)?$/ rather than just /\.(js|jsx)$/
-          // because you might change the hot reloading server from the custom one
-          // to Webpack's built-in webpack-dev-server/client?/, which would not
-          // get properly excluded by /\.(js|jsx)$/ because of the query string.
-          // Webpack 2 fixes this, but for now we include this hack.
-          // https://github.com/facebookincubator/create-react-app/issues/1713
-          /\.(js|jsx)(\?.*)?$/,
-          /\.(ts|tsx)(\?.*)?$/,
+          /\.(js|jsx)$/,
+          /\.(ts|tsx)$/,
           /\.css$/,
           /\.json$/,
           /\.bmp$/,
@@ -237,7 +226,7 @@ module.exports = {
         ],
       },
       // ** STOP ** Are you adding a new loader?
-      // Remember to add the new extension(s) to the "url" loader exclusion list.
+      // Remember to add the new extension(s) to the "file" loader exclusion list.
     ],
   },
   plugins: [
