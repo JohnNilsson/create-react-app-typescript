@@ -281,7 +281,6 @@ module.exports = {
           comments: false,
           beautify: false,
         },
-        warnings: true,
       },
       sourceMap: shouldUseSourceMap,
     }),
