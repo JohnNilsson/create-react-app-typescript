@@ -274,16 +274,14 @@ module.exports = {
     new webpack.DefinePlugin(env.stringified),
     // Minify the code.
     new UglifyJsPlugin({
-      //test: /.js($|?)/i //Do we need to change this for ts-loader output?
-      parallel: true,
       uglifyOptions: {
-        ecma: 6,
+        ie8: false,
+        ecma: 8,
         output: {
           comments: false,
-          // Turned on because emoji and regex is not minified properly using default
-          // https://github.com/facebookincubator/create-react-app/issues/2488
-          ascii_only: true,
+          beautify: false,
         },
+        warnings: true,
       },
       sourceMap: shouldUseSourceMap,
     }),
