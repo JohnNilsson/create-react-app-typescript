@@ -273,17 +273,18 @@ module.exports = {
     // Otherwise React will be compiled in the very slow development mode.
     new webpack.DefinePlugin(env.stringified),
     // Minify the code.
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        ie8: false,
-        ecma: 8,
-        output: {
-          comments: false,
-          beautify: false,
-        },
-      },
-      sourceMap: shouldUseSourceMap,
-    }),
+    // TODO: Disabled due to bugs in the minified output
+    // new UglifyJsPlugin({
+    //   uglifyOptions: {
+    //     ie8: false,
+    //     ecma: 8,
+    //     output: {
+    //       comments: false,
+    //       beautify: false,
+    //     },
+    //   },
+    //   sourceMap: shouldUseSourceMap,
+    // }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
       filename: cssFilename,
